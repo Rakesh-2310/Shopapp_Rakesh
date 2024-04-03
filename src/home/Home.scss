@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0; 
+    text-decoration: none;
+
+    .bodyContainer{
+        position: relative;
+    
+        .component1{
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            z-index: 2;
+        }
+    }
+}

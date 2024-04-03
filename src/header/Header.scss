@@ -1,0 +1,86 @@
+@mixin mobile{
+    @media screen and (max-width:480px){
+        @content;
+    }
+}
+
+
+.headerContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80px;
+    background-color: rgb(0, 47, 255);
+    flex-direction: row;
+    padding: 5px;
+    @include mobile{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .headerLogo{
+        flex: 2;
+        h1{
+            font-family: "Comic Sans MS", Times, serif;
+            color: white;
+            font-size: 2rem;
+
+            @include mobile{
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .headerLinks{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        gap:20px;
+        padding: 5px;
+        font-size: 1.25rem;
+
+        @include mobile{
+            font-size: 1rem;
+        }
+
+
+        img{
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+
+            @include mobile{
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        a{
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+
+
+            span{
+                font-size:0.8rem;
+            }
+        }
+
+        button{
+            display: flex;
+            align-items: center;
+            border: none;
+            background-color:  rgb(22, 118, 197);
+            color: white;
+            font-size: 1.25rem;
+            border-radius: 2px;
+            padding: 5px;
+
+            @include mobile{
+                font-size: 1rem;
+            }
+        }
+    }
+
+}

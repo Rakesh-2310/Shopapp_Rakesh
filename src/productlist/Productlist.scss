@@ -1,0 +1,37 @@
+.productListContainerHolder{
+    display: flex;
+    z-index: 1;
+    justify-content: center;
+    margin: 10px 5px;
+    background-color:  rgb(22, 118, 197);
+    border-radius: 20px;
+
+
+    .productListContainer{
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 10px;
+        width: 800px;
+        min-height: 500px;
+        background-color: white;
+
+        .productsTitle{
+            display: flex;
+            justify-content: center;
+            border: 1px solid rgb(22, 118, 197);
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+
+        }
+
+        .products{
+            margin: 5px 10px;
+            display: flex;
+            align-items: start;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+    }
+}

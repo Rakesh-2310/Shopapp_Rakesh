@@ -1,0 +1,74 @@
+@mixin mobile{
+    @media screen and (max-width:480px){
+        @content;
+    }
+}
+
+.productDetailHolder{
+    width: 150px;
+    height: 250px;
+    margin: 10px;
+    padding: 10px 2px;
+    border: 1px solid black;
+    overflow: hidden;
+    border: 1px solid rgb(22, 118, 197);
+    border-radius: 5px;
+    cursor: pointer;
+
+    @include mobile{
+        width: 100px;
+        height: 150px;
+        margin: 5px;
+        padding: 5px 1px;
+    }
+
+    .productTitle{
+        padding: 2px 10px;
+        font-size: 0.75rem;
+        border: 1px solid rgb(22, 118, 197);
+        max-height:80px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+        border-radius: 5px;
+
+        @include mobile{
+            font-size: 0.6rem;
+            margin: 5px;
+            max-height:60px;
+            border-radius: 2px;
+        }
+    }
+
+    .imageContainer{
+        position: relative;
+        overflow: hidden;
+        
+        img{
+            width: 100px;
+            height: 150px;
+            padding: 0 20px;
+
+            @include mobile{
+                width: 50px;
+                height: 75px;
+                padding: 0 10px;
+            }
+        }
+
+        .productDetail{
+            z-index: 1;
+            position: absolute;
+            bottom: 0;
+            padding: 0 20px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.75);
+
+            @include mobile{
+                padding: 0 15px;
+                font-size: 0.75rem;
+            }
+        }
+    }
+}
