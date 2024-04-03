@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./home/Home";
+import Productpage from "./productpage/Productpage";
+import Addtocart from "./cartpage/Addtocart";
+import { useState } from "react";
+import Signup from "./signup/Signup";
+import Login from "./Login";
+import { AuthProvider } from "./Authcontext";
+import { useRoutes } from "react-router-dom";
 
 function App() {
+  
+  const [totalItems, setTotalItems] = useState(0);
+  const routesArray = [
+    {
+      path: "/",
+      element: <Login />,
+    },
+    {
+      path: "Signup",
+      element: <Signup />,
+    },
+    {
+      path: "/product/:Id",
+      element: <Productpage totalItems={totalItems} />,
+    },
+    {
+      path: "/Home",
+      element: <Home totalItems={totalItems} />,
+    },
+    {
+      path: "/Addtocart",
+      element: <Addtocart totalItems={totalItems} setTotalItems={setTotalItems} />,
+    },
+  ];
+  let routesElement = useRoutes(routesArray);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      {routesElement}
+    </AuthProvider>
   );
 }
 
