@@ -15,11 +15,11 @@ const Header = ({ handleFilter, totalItems }) => {
         <h1>SKR FakeShop</h1>
       </div>
       <div className='headerLinks'>
-        <Link to="/Home">Home</Link>
+        <Link to="/Home">Home</Link> {/* Navigate to Home page */}
         <img src={filter} alt="Filter" onClick={handleFilter}/>
         <Link to="/Addtocart">
           <img src={cart} alt="Cart"/>
-          <span>{totalItems}</span>
+          <span>{totalItems}</span> {/* Display total items in cart header*/}
         </Link>
         <button onClick={() => { doSignOut().then(() => { navigate('/') }) }} >logout</button>
       </div>

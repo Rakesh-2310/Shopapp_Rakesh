@@ -7,17 +7,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectedProduct, removeSelectedProduct, setAddToCartProducts } from "../redux/actions/productAction";
 
 const Productpage = ({totalItems}) => {
-
+    //useParam hook to fetch Id from URL 
     const { Id } = useParams();
     const [number,setNumber] = useState(1);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    //Handle product quantity form
     const handleChange = (event) =>{
       setNumber(event.target.value);
     }
 
     const productList = useSelector((state) => state.addtocartProduct.productList);
+    // HandleClick function to add product to cart based on product existing. If exist, it will be update quantity.
     const handleClick = () => {
         const existingProductIndex = productList.findIndex(item => item.id === product.id);
       
@@ -29,7 +30,8 @@ const Productpage = ({totalItems}) => {
             quantityPrice: (updatedProductList[existingProductIndex].quantity + parseInt(number, 10)) * product.price,
           };
           dispatch(setAddToCartProducts(updatedProductList));
-        } else {
+        } //If not exist, add new detail of product to cart 
+        else {
           const cartItem = {
             ...product,
             quantity: parseInt(number, 10), 
@@ -43,6 +45,7 @@ const Productpage = ({totalItems}) => {
 
     const product = useSelector((state) => state.product);
     const { image, title, price, category, description ,rating} = product || {};
+    //Fetch product using product id
     const fetchProductDetail = async (id) => { 
       const response = await axios
         .get(`https://fakestoreapi.com/products/${id}`)

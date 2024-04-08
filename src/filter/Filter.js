@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Filter = ({ visible }) => {
 
+  // Filter products based on selected price range, category, and rating when filter options change
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
   const [selectedPriceRange, setSelectedPriceRange] = useState("none");

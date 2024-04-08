@@ -79,6 +79,7 @@ const Login = () => {
                                     {isSigningIn ? 'Signing In...' : 'Continue with Google'}
                             </button>
                         </div>
+                        {/* Handle error message*/}
                         {errorMessage && (
                             <span>{errorMessage}</span>
                         )}

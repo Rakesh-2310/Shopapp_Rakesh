@@ -11,12 +11,13 @@ const Signup = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [confirmPassword, setconfirmPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const [isRegistering, setIsRegistering] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
     const { userLoggedIn } = useAuth()
 
+    // Handle user registration form submission
     const onSubmit = async (e) => {
         e.preventDefault()
         if(!isRegistering) {
@@ -67,13 +68,14 @@ const Signup = () => {
                             autoComplete='off'
                             required
                             value={confirmPassword} 
-                            onChange={(e) => { setconfirmPassword(e.target.value) }} 
+                            onChange={(e) => { setConfirmPassword(e.target.value) }} 
                             placeholder='confirmPassword' />
                         <button
                         type="submit"
                         disabled={isRegistering}>
                             {isRegistering ? 'Signing Up...' : 'Sign Up'}
                         </button>
+                        {/* Handle error message*/}
                         {errorMessage && (
                             <span>{errorMessage}</span>
                         )}

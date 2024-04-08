@@ -8,7 +8,7 @@ const Product = () => {
   const filteredProducts = useSelector((state) => state.filteredProducts);
   const renderList = filteredProducts.map((product) => {
   const { id, title, image, price, rating } = product;
-
+  // Render list of products with links to their individual pages
     return (
         <div className='productDetailHolder' key={id}>
           <Link to={`/product/${id}`}>
