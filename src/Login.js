@@ -6,37 +6,38 @@ import "./Login.scss"
 
 const Login = () => {
 
-  const { userLoggedIn } = useAuth()
+    const { userLoggedIn } = useAuth()
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [isSigningIn, setIsSigningIn] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [isSigningIn, setIsSigningIn] = useState(false)
+    const [isGoogle, setIsGoogle] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
-  const onSubmit = async (e) => {
-      e.preventDefault()
-      if(!isSigningIn) {
-            setIsSigningIn(true)
-            try{
-                await doSignInWithEmailAndPassword(email, password)
-            }
-            catch (error) {
-                setIsSigningIn(false)
-                setErrorMessage(error.message)
-        }  
-      }
-  }
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        if(!isSigningIn) {
+                setIsSigningIn(true)
+                try{
+                    await doSignInWithEmailAndPassword(email, password)
+                }
+                catch (error) {
+                    setIsSigningIn(false)
+                    setErrorMessage(error.message)
+            }  
+        }
+    }
 
-  const onGoogleSignIn = (e) => {
-      e.preventDefault()
-      if (!isSigningIn) {
-          setIsSigningIn(true)
-          doSignInWithGoogle().catch(err => {
-              setIsSigningIn(false)
-              setErrorMessage(err)
-          })
-      }
-  }
+    const onGoogleSignIn = (e) => {
+        e.preventDefault()
+        if (!isGoogle) {
+            setIsGoogle(true)
+            doSignInWithGoogle().catch(err => {
+                setIsGoogle(false)
+                setErrorMessage(err)
+            })
+        }
+    }
 
   return (
     <div className='pageContainer'>
@@ -76,7 +77,7 @@ const Login = () => {
                             <button
                                 disabled={isSigningIn}
                                 onClick={(e) => { onGoogleSignIn(e) }}>
-                                    {isSigningIn ? 'Signing In...' : 'Continue with Google'}
+                                    {isGoogle ? 'Signing In...' : 'Continue with Google'}
                             </button>
                         </div>
                         {/* Handle error message*/}
@@ -90,7 +91,6 @@ const Login = () => {
             </div>
         </div>
     </div>
-  )
-}
+)}
 
 export default Login
